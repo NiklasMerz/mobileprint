@@ -30,5 +30,26 @@ function onDeviceReady() {
 
 function print() {
     const text = document.getElementById('textfield').value;
-    alert(text);
+    
+    cordova.epos2.connectPrinter("BT:00:01:90:7C:06:1D", "TM-P20")
+    .then((res) => console.debug(res))
+    .catch((err) => console.error(err));
+
+    cordova.epos2.getPrinterStatus()
+    .then(function(status) {
+        console.debug(status);
+    })
+    .catch(function(error) {
+       console.error(error);
+    });
+
+    cordova.epos2.printText(text, 0, 1, 2, true)
+    .then((result) => {
+        console.debug(result);
+        // success callback
+        alert('Printing done!');
+    }).catch((error) => {
+        // error callback
+        alert('Printing failed:' + error);
+    });
 }
