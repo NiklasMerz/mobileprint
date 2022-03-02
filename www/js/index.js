@@ -32,8 +32,9 @@ function print() {
     const text = document.getElementById('textfield').value;
     
     cordova.epos2.connectPrinter("BT:00:01:90:7C:06:1D", "TM-P20")
-    .then((res) => console.debug(res))
-    .catch((err) => console.error(err));
+    .then((res) => { 
+    
+    console.debug(res);
 
     cordova.epos2.getPrinterStatus()
     .then(function(status) {
@@ -52,4 +53,6 @@ function print() {
         // error callback
         alert('Printing failed:' + error);
     });
+
+    }).catch((err) => console.error(err));
 }
