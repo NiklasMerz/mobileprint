@@ -30,6 +30,8 @@ function onDeviceReady() {
 
 function print() {
     const text = document.getElementById('textfield').value;
+
+    //cordova.epos2.setLang("EPOS2_MODEL_ANK", "EPOS2_LANG_EN");
     
     cordova.epos2.connectPrinter("BT:00:01:90:7C:06:1D", "TM-P20")
     .then((res) => { 
