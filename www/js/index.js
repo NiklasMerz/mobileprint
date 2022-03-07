@@ -50,7 +50,7 @@ function print() {
     .then((result) => {
         console.debug(result);
         // success callback
-        alert('Printing done!');
+        console.log('Printing done!');
     }).catch((error) => {
         // error callback
         alert('Printing failed:' + error);
