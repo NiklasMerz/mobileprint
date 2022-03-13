@@ -51,6 +51,15 @@ function print() {
         console.debug(result);
         // success callback
         console.log('Printing done!');
+
+        // Barcodes
+        cordova.epos2.printBarCode128("11111", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
+        //cordova.epos2.printBarCode("1234567", "EPOS2_BARCODE_EAN8", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
+        //cordova.epos2.printBarCode("123456789011", "EPOS2_BARCODE_EAN13", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
+
+        // QR Code
+        cordova.epos2.printSymbol("11111", "EPOS2_SYMBOL_QRCODE_MODEL_1", "EPOS2_PARAM_DEFAULT", 3,3,0, true).then(res => console.debug(res)).catch(e => console.error(e))
+
     }).catch((error) => {
         // error callback
         alert('Printing failed:' + error);
