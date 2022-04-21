@@ -31,7 +31,7 @@ function onDeviceReady() {
 function print() {
     const text = document.getElementById('textfield').value;
 
-    //cordova.epos2.setLang("EPOS2_MODEL_ANK", "EPOS2_LANG_EN");
+    cordova.epos2.setLang("EPOS2_MODEL_ANK", "EPOS2_LANG_MULTI");
     
     cordova.epos2.connectPrinter("BT:00:01:90:7C:06:1D", "TM-P20")
     .then((res) => { 
@@ -54,11 +54,11 @@ function print() {
 
         // Barcodes
         cordova.epos2.printBarCode128("11111", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
-        //cordova.epos2.printBarCode("1234567", "EPOS2_BARCODE_EAN8", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
-        //cordova.epos2.printBarCode("123456789011", "EPOS2_BARCODE_EAN13", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
+        cordova.epos2.printBarCode("1234567", "EPOS2_BARCODE_EAN8", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
+        cordova.epos2.printBarCode("123456789011", "EPOS2_BARCODE_EAN13", 0,0,2,70, true).then(res => console.debug(res)).catch(e => console.error(e))
 
         // QR Code
-        cordova.epos2.printSymbol("11111", "EPOS2_SYMBOL_QRCODE_MODEL_1", "EPOS2_PARAM_DEFAULT", 3,3,0, true).then(res => console.debug(res)).catch(e => console.error(e))
+        cordova.epos2.printSymbol("https://github.com/NiklasMerz", "EPOS2_SYMBOL_QRCODE_MODEL_2", "EPOS2_PARAM_DEFAULT", 5,5,0, true).then(res => console.debug(res)).catch(e => console.error(e))
 
     }).catch((error) => {
         // error callback
